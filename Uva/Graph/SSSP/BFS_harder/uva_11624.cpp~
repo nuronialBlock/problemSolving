@@ -1,0 +1,182 @@
+// hasta la victoria siempre
+// Joy Bangla!
+
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pii pair<int , int >
+#define pLL pair<LL,LL>
+#define psi pair<string, int>
+#define pdd pair<double,double>
+#define ff first
+#define ss second
+
+#define LL long long 
+#define uLL unsigned long long
+
+#define vi vector<int > 
+#define vc vector<char > 
+#define vpii vector <pii>
+#define vpsi vector<psi>
+#define vd vector <double>
+#define vb vector <bool>
+#define vs vector <string>
+#define vLL vector <LL >
+#define pb push_back
+#define sz size()
+
+
+#define mii map<int,int>
+#define mdd map<double,double>
+#define msi map<string,int>
+#define mis map<int , string> 
+#define mLL map<LL,LL>
+#define mLi map<LL,int>
+#define miL map<int,LL>
+#define mci map<char,int>
+
+#define PQ priority_queue
+#define maxN 100005
+#define maxX **
+#define maxY ***
+#define maxx *****
+#define mod 100000000
+
+#define SET(a,n) memset(a,n,sizeof(a))
+
+#define all(v) v.begin(),v.end()
+#define rall(v) v.rbegin(),v.rend()
+
+// loops 
+#define loop(i,a,n) for(int i = a ; i < n ; i++ )
+#define rloop(i,a,n) for(int i = a ; i > n ; i-- )
+#define fasterIO ios::sync_with_stdio(0)
+
+int tc , n , m;
+char grid[1009][1009];
+int fire[1009][1009] , joe[1009][1009];  
+queue<pii> qJoe , qFire ;
+
+int X[] = {0,-1,0,1};
+int Y[] = {-1,0,1,0};
+
+void BFSJoe(){
+	
+	while(!qJoe.empty()){
+		pii val = qJoe.front();
+		int x = val.ff;
+		int y = val.ss;
+		qJoe.pop();
+		for(int i = 0 ; i < 4 ; i++){
+			int nx , ny;
+			nx = x + X[i];
+			ny = y + Y[i];
+			if((nx >= 0 && nx < n) && (ny >= 0 &&  ny < m)){
+				if(joe[nx][ny] != -1 && joe[nx][ny] != -1){
+					joe[nx][ny] = joe[x][y] + 1;
+					qJoe.push(pii(nx,ny));
+				}
+			}
+		}
+	}
+	
+	return ;
+}
+
+void BFSFire(){
+	
+	while(!qFire.empty()){
+		pii val = qFire.front();
+		int x = val.ff;
+		int y = val.ss;
+		qFire.pop();
+		for(int i = 0 ; i < 4 ; i++){
+			int nx , ny;
+			nx = x + X[i];
+			ny = Y + y[i];
+			if((nx >= 0 && nx < n) && (ny >= 0 &&  ny < m)){
+				if(fire[nx][ny] != -1 && fire[nx][ny] != -1){
+					fire[nx][ny] = fire[x][y] + 1;
+					qFire.push(pii(nx,ny));
+				}
+			}
+		}
+	}
+	
+	return ;
+}
+
+int main()
+{
+	fasterIO;
+	cin >> tc;
+	while(tc--){
+		cin >> n >> m;
+		cin.ignore();
+		SET(fire,0);
+		SET(joe,0);	
+		loop(i,0,n){
+			loop(j,0,m){
+				cin >> grid[i][j];
+				if(grid[i][j] == '#'){
+					fire[i][j] = -1;
+					joe[i][j] = -1;
+				}
+				else if(grid[i][j] == 'J'){
+					qJoe.push(pii(i,j));
+					joe[i][j] = 1;
+				}
+				else if(grid[i][j] == 'F'){
+					qFire.push(pii(i,j));
+					fire[i][j] = 1;
+				}
+			}
+		}
+		int mini = 999999999;
+		for(int i = 0 ; i < m ; i++){
+			if(joe[0][i] != -1 && (joe[0][i] < fire[0][i])){
+				mini = min(joe[0][i],mini);
+			}
+		}
+		for(int i = 0 ; i < m ; i++){
+			if(joe[n-1][i] != -1 && (joe[n-1][i] < fire[n-1][i])){
+				mini = min(joe[n-1][i],mini);
+			}
+		}
+		for(int i = 0 ; i < n ; i++){
+			if(joe[i][0] != -1 && (joe[i][0] < fire[i][0])){
+				mini = min(joe[i][0],mini);
+			}
+		}
+		for(int i = 0 ; i < n ; i++){
+			if(joe[i][m-1] != -1 && (joe[i][m-1] < fire[i][m-1])){
+				mini = min(joe[i][m-1],mini);
+			}
+		}
+		
+		if(mini == 999999999) cout << "IMPOSSIBLE\n";
+		else cout << mini << "\n";
+		
+	}
+	
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,78 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back
+#define pii pair<int,int>
+
+
+bool isPrime[(1<<15) + 5];
+vector<int> primeList;
+const int maxi = ((1<<15) + 1) ;
+
+
+void sieve(){
+	int s_size = sqrt((1<<15) + 1);	
+	for(int j = 3 ; j <= s_size ; j += 2){
+		if(isPrime[j]){
+			for(int k = j * j ; k <= maxi; k += j + j ){
+				isPrime[k] = 0;
+			}
+		}
+	} 
+}
+
+void generate_prime(){
+	
+	memset(isPrime,1,sizeof isPrime);
+	
+	sieve();
+	isPrime[0] = 0;
+	isPrime[1] = 0;
+	
+	for(int i = 3 ; i <= maxi ; i += 2){
+		if(isPrime[i]){
+			primeList.pb(i);
+		}
+	}
+
+}
+
+
+int main()
+{
+	ios_base::sync_with_stdio(0);
+	int n;
+	
+	generate_prime();
+	
+	while(cin >> n && n){
+		int num = n ;
+		//if(num == 1 || num == 2 ) {cout << 0 << "\n";continue;}
+		int idx = 0 ;
+		for(int i = 0 ; i < primeList.size() ; i++) if(primeList[i] < num){idx++;}
+		int count = 0 ;
+		map<pii,int> m;
+		for(int j = 0 ; j < idx ; j++){
+			
+			int num = n - primeList[j]; 
+			
+			pii p1 = make_pair(primeList[j],num);
+			pii p2 = make_pair(num,primeList[j]);
+			
+			if(!isPrime[num]) continue;
+			if(m[p1] || m[p2]) continue;
+			
+			//cout << num << " " << primeList[j] << "\n";
+			
+			m[p1]++; m[p2]++;
+			count++;
+		}
+		
+		
+		cout << count << "\n";	
+		
+	}
+
+	return 0;
+}

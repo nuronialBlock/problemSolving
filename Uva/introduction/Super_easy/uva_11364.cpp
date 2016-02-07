@@ -1,0 +1,47 @@
+#include <bits/stdc++.h> 
+
+using namespace std;
+
+int main()
+{
+	
+	
+	int tc; 
+	
+	
+	cin >> tc ; 
+	
+	while(tc--){
+		
+		
+		int kase ;
+		
+		cin >> kase ; 
+		
+		int maxi , mini , num  ;
+		
+		cin >> maxi ;
+		
+		mini = maxi ;
+		 
+		 
+		for(int i = 1 ; i < kase ; i++ ){
+			
+			cin >> num; 
+			
+			mini = min(num,mini);
+			maxi = max(num,maxi);	
+				
+		}
+		
+		
+		cout << ( maxi - mini ) * 2  << endl; 
+		
+		
+	}	
+	
+
+	return 0 ;
+	
+	
+}

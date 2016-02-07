@@ -1,0 +1,133 @@
+// hasta la victoria siempre
+// Joy Bangla!
+
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pii pair<int , int >
+#define pLL pair<LL,LL>
+#define psi pair<string, int>
+#define ff first
+#define ss second
+
+#define LL long long 
+#define uLL unsigned long long
+
+#define vi vector<int > 
+#define vc vector<char > 
+#define vpii vector <pii>
+#define vpsi vector<psi>
+#define vd vector <double>
+#define vb vector <bool>
+#define vs vector <string>
+#define vLL vector <LL >
+#define pb push_back
+#define sz size()
+
+
+#define mii map<int,int>
+#define mdd map<double,double>
+#define msi map<string,int>
+#define mis map<int , string> 
+#define mLL map<LL,LL>
+#define mLi map<LL,int>
+#define miL map<int,LL>
+#define mci map<char,int>
+
+#define pq priority_queue
+#define maxN 100005
+#define maxX **
+#define maxY ***
+#define maxx *****
+#define mod 100000000
+
+#define SET(a,n) memset(a,n,sizeof(a));
+
+#define all(v) v.begin(),v.end()
+#define rall(v) v.rbegin(),v.rend()
+
+// loops 
+#define loop(i,a,n) for(int i = a ; i < n ; i++ )
+#define rloop(i,a,n) for(int i = a ; i > n ; i-- )
+#define fasterIO ios::sync_with_stdio(0)
+
+int visited[50];
+mii mark;
+vi graph[32];
+
+void bfs(int src , int ttl){
+	visited[src] = 0;
+	queue<int> q;
+	q.push(src);
+	while(!q.empty()){
+		int node = q.front();q.pop();
+		if(visited[node] == ttl) continue;
+		for(int i = 0 ; i < graph[node].sz ; i++){
+			int newNode = graph[node][i];
+			if(visited[newNode] == -1){
+				visited[newNode] = visited[node] + 1;
+				q.push(newNode);
+			} 
+		}
+	}
+}
+
+int main()
+{
+
+	fasterIO;
+	
+	int n , tc = 0 ;
+	
+	while(cin >> n && n){
+		int nodeNo = 1;
+		mark.clear();
+		loop(i,0,31) graph[i].clear();
+		int u , v;
+		loop(i,0,n){
+			cin >> u >> v;
+			if(!mark[u]){ mark[u] = nodeNo;nodeNo++;}
+			if(!mark[v]){ mark[v] = nodeNo;nodeNo++;}
+			graph[mark[u]].pb(mark[v]);
+			graph[mark[v]].pb(mark[u]);
+		}
+		
+		int src , ttl ;
+		while(cin >> src >> ttl){
+			if(!src && !ttl) break;
+			SET(visited,-1);
+			int aSrc = src;
+			src = mark[src];
+			bfs(src,ttl);
+			int ans = 0 ;
+			for(int i = 1 ; i < nodeNo ; i++)
+				if(visited[i] == -1) ans++;
+				
+			cout << "Case " << ++tc << ": "<< ans << " nodes not reachable from node "<< aSrc <<" with TTL = " << ttl << ".\n";
+			
+		}
+		
+	}
+	
+	
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

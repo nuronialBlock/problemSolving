@@ -1,0 +1,63 @@
+#include <bits/stdc++.h>
+
+using namespace std ; 
+
+
+int main(){
+
+	
+	
+	int tc ; 
+	cin >> tc  ;
+	
+	
+	while(tc--){
+		
+		int n ; 
+		int ara[102];
+		
+		cin >> n ; 
+		
+		
+		string s1 , s2 ;
+		int index ; 
+		int start = 0 ; 
+		
+		for(int i = 1 ; i <= n ; i++  ){
+			
+			cin >> s1 ; 
+			
+			if(s1 == "LEFT"){
+				
+				ara[i] = -1 ; 
+				
+			}
+			else if( s1 == "RIGHT"){
+				ara[i] = 1 ; 
+			}
+			
+			else{
+			
+				cin >> s2 >> index ; 
+				
+				ara[i] = ara[index];
+			
+			}
+			
+			start += ara[i]; 
+			
+			
+		}
+		
+		cout << start <<endl;
+		
+	
+	}
+
+
+
+
+
+	return 0 ; 
+	
+}

@@ -1,0 +1,97 @@
+// hasta la victoria siempre
+// Joy Bangla!
+
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+#define vi vector<int > 
+#define pb push_back
+#define sz size()
+
+#define SET(a,n) memset(a,n,sizeof(a))
+
+#define loop(i,a,n) for(int i = a ; i < n ; i++)
+#define rloop(i,a,n) for(int i = a ; i > n ; i-- )
+#define fasterIO ios::sync_with_stdio(0)
+
+int tc;
+vi graph[2505];
+int visited[2505];
+int ara[2505];
+
+void bfs(int src){
+	
+	SET(visited,-1);
+	queue<int> q;
+	q.push(src);
+	visited[src] = 0;
+	
+	while(!q.empty()){
+		int node = q.front(); q.pop();
+
+		for(int i = 0 ; i < graph[node].sz ; i++){
+			int newNode = graph[node][i];
+			if(visited[newNode] == -1){
+				visited[newNode] = visited[node] + 1;
+				ara[visited[node]+1]++;
+				q.push(newNode);
+			}
+		}
+	}
+}
+
+int main()
+{
+	fasterIO;
+	
+	while(cin >> tc){
+		loop(i,0,tc){
+			int edge , n;
+			cin >> edge;
+			loop(j,0,edge){
+				cin >> n;
+				graph[i].pb(n);
+			}
+		}
+		int kase;
+		cin >> kase ;
+		loop(i,0,kase){
+			int node;
+			SET(ara,0);
+			cin >> node;
+			bfs(node);
+			int max = 0 , idx = 0 ;
+			for(int j = 0 ; j < tc ; j++){
+				if(ara[j] > max){
+					max = ara[j];
+					idx = j;
+				}
+			}
+			if(!max) cout << 0 << "\n";
+			else{
+				cout << max << " " << idx << "\n";
+			}
+		}
+		
+	}
+	
+	return 0;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

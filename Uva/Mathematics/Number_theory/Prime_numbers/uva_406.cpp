@@ -1,0 +1,115 @@
+																																																																																																																																																																																																																						#include <bits/stdc++.h>
+
+using namespace std;
+
+const int tot = 1002;
+const int maxi = sqrt(tot) + 1;
+bool isPrime[tot];
+vector<int> primeList;
+
+
+void sieve(){	 
+	int s_size = maxi;
+	for(int i = 3 ; i <= s_size ; i += 2){
+		if(isPrime[i]){
+			for(int j = i * i ; j <= tot ; j += i + i ){
+				isPrime[j] = 0;
+			}
+		}
+	}
+	
+}
+
+
+void generate_prime(){
+	
+	memset(isPrime,1,sizeof isPrime);
+	sieve();
+	
+	primeList.push_back(1);
+	primeList.push_back(2);
+	
+	for(int i = 3 ; i <= tot ; i += 2){
+		if(isPrime[i]){
+			primeList.push_back(i);
+		}
+	}
+	
+}
+
+int numberOfPrimes(int n){
+	int ans = 0 ;
+	for(int i = 0 ; i < primeList.size() ; i++ ){
+		if(primeList[i] > n) break;
+		ans++;
+	}
+	
+	return ans;
+	
+}
+
+
+int main()
+{
+	
+	
+	ios_base::sync_with_stdio(0);
+	generate_prime();
+	int n , c ;
+	
+	while(cin >> n >> c){
+		
+		cout << n << " " << c << ": ";
+		
+		int idx = numberOfPrimes(n);
+		
+		if(idx % 2){
+			if((c*2-1) > idx){
+				for(int i = 0 ; i < idx ; i++){
+					cout << primeList[i];
+					if(i == (idx - 1)) cout << "\n\n";
+					else cout << " ";
+				}
+				continue;
+			}
+			else{
+				int mid = idx / 2 ;
+				for(int j = mid - c + 1; j < (mid+c)  ; j++){
+					cout << primeList[j];
+					if(j == (mid+c-1)) cout << "\n\n";
+					else cout << " ";
+				}
+				continue;
+			}
+		}
+		else{
+		
+			if((c*2) > idx){
+				for(int i = 0 ; i < idx ; i++){
+					cout << primeList[i];
+					if(i == (idx - 1)) cout << "\n\n";
+					else cout << " ";
+				}
+				continue;
+			}
+			else{
+				int mid = idx / 2 ;
+				mid--;
+				for(int j = mid - c + 1; j <= (mid+c)  ; j++){
+					cout << primeList[j];
+					if(j == (mid+c)) cout << "\n\n";
+					else cout << " ";
+				}
+				continue;
+				
+			}
+		
+		}
+		
+	} 
+	
+	return 0;
+}
+
+
+

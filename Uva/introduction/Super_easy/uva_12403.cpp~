@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{	
+
+	int tc ;
+	
+	cin >>tc;
+	
+	
+	string don = "donate" , rep ="report" , input ;
+	
+	int k , sum = 0 ; 
+	
+	while(tc--){
+		
+		
+		cin >> input ; 	
+		
+		if( input == don ) {cin >> k ;sum+=k;} 
+		
+		else cout << 
+		
+		
+	}
+
+
+
+	return 0 ; 
+}

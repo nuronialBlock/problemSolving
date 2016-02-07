@@ -1,0 +1,125 @@
+
+// write a code for Shaking the world
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pii pair<int , int >
+#define ff first
+#define ss second
+
+#define ll long long 
+#define ull unsigned long long
+
+#define vi vector<int > 
+#define vc vector<char > 
+#define vpi vector <pii>
+#define vd vector <double >
+#define vb vector <bool >
+#define vs vector <string >
+#define pb push_back
+#define sz size()
+
+
+#define mii map<int , int >
+#define mdd map<double,double>
+#define msi map<string,int>
+#define mis map<int , string> 
+
+#define pq priority_queue
+#define maxN 100005
+#define maxX **
+#define maxY ***
+#define maxx *****
+#define mod 100000000
+
+#define SET(a,n) memset(a,n,sizeof(a));
+
+// loops 
+#define loop(i,a,n) for(int i = a ; i < n ; i++ )
+#define rloop(i,a,n) for(int i = a ; i > n ; i-- )
+#define fasterIO ios::sync_with_stdio(0)
+
+
+
+
+
+
+
+int ara[105];
+
+int main()
+{
+
+
+
+	int tc , kase  = 0 ; 
+	
+	cin >> tc ;
+	
+	while(tc--){
+		
+		
+		SET(ara,0);
+		
+		string in ; 
+		
+		cin >> in ;
+		
+		
+		printf("Case %d:",++kase);
+		
+		int siz = in.sz ; 
+		
+		int index = 0 ; 
+		
+		loop(i,0,siz){
+			
+			if( in[i] == '>' ){
+				
+				index = (index +1 ) % 100 ; 
+				
+			}
+			
+			else if(in[i] == '<'){
+				index = (index +100 - 1 ) % 100 ; 
+			}
+			
+			else if(in[i] == '+'){
+				
+				ara[index] = (ara[index]+1) % 256 ; 
+				
+			}
+			
+			else if(in[i] == '-'){
+				
+				ara[index] = (ara[index]-1+256) % 256 ;
+			}
+			
+			
+			
+			
+		}
+		
+		loop(i,0,100){
+			
+			printf(" %02X",ara[i]);
+			
+		}
+		cout << endl ; 
+		
+		
+	}
+	
+	return 0 ; 
+}
+
+
+
+
+
+
+
+
+

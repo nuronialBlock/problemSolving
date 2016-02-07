@@ -1,0 +1,113 @@
+
+// write a code for Shaking the world
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pii pair<int , int >
+#define ff first
+#define ss second
+
+#define ll long long 
+#define ull unsigned long long
+
+#define vi vector<int > 
+#define vc vector<char > 
+#define vpi vector <pii>
+#define vd vector <double >
+#define vb vector <bool >
+#define vs vector <string >
+#define pb push_back
+#define sz size()
+
+
+#define mii map<int , int >
+#define mdd map<double,double>
+#define msi map<string,int>
+#define mis map<int , string> 
+
+#define pq priority_queue
+#define maxN 100005
+#define maxX **
+#define maxY ***
+#define maxx *****
+#define mod 100000000
+
+#define SET(a,n) memset(a,n,sizeof(a));
+
+// loops 
+#define loop(i,a,n) for(int i = a ; i < n ; i++ )
+#define rloop(i,a,n) for(int i = a ; i > n ; i-- )
+#define fasterIO ios::sync_with_stdio(0)
+
+
+
+
+int ara[1000006];
+
+
+
+
+int main()
+{
+
+
+
+	int n  , kase = 0 ; 
+	
+	string s ; 
+	char ch ;
+	
+	while(cin >> s ){
+		
+		SET(ara,0);
+			
+		int siz = s.sz ;
+		if(s[0] == '\n') break;
+		
+		cin >> n ; 		
+		
+		int value = 0 ; 
+		int pos = 0 ;
+		loop(k,0,siz){
+			
+			if(s[pos] == s[k] ) ara[k] = value;
+			
+			else{
+				 ++value;
+				pos = k ;
+				ara[pos] = value;
+			}
+		}
+	
+		int i , j ;
+		
+		printf("Case %d:\n",++kase);
+		
+		loop(k,0,n){
+		
+			cin >> i >> j ;
+			
+			
+			if(ara[i] == ara[j]) cout << "Yes\n";
+			else cout << "No\n";
+			
+			
+		}
+		
+		scanf("%c",&ch);
+	}
+	
+	
+	return 0 ; 
+}
+
+
+
+
+
+
+
+
+
