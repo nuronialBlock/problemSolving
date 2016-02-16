@@ -1,0 +1,51 @@
+/*
+
+ID: ahnaf933
+PROG: ride
+LANG: C++ 
+                
+*/
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    
+  //  ofstream fout ("ride.out");
+   // ifstream fin ("ride.in");
+    
+    freopen("ride.in","r",stdin);
+   	freopen("ride.out","w",stdout);
+    
+    
+    string cmt, grp;
+   
+    int mul1 = 1 ;
+    int  mul2 = 1 ;
+    
+    
+    cin >> cmt >> grp;
+    
+    int  num ;
+   	
+   	for(int i = 0 ; i < 6 ; i++){
+   		
+   		num = cmt[i] - '96';
+   		mul1 *= num; 
+   		cout << mul1 <<endl;
+   		
+   		num = grp[i] - '96';
+   		mul2 *= num; 
+   		cout << mul2 <<endl;
+   			
+   		
+   	}	
+   	
+   	
+   	if(mul1%47 == mul2%47) cout << "GO" <<endl;
+   	else cout << "STAY" <<endl;
+   	 
+    return 0;
+}
+
