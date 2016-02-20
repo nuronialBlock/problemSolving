@@ -1,0 +1,42 @@
+import java.util.*;
+
+public class Note {
+
+    public static void main(String[] args) {
+		int[] ara = {1,2,3,4,5,6,7,8};
+		int[] ara2 = {8,7,6,5,4,3,2,1};
+		int[] input = new int[10];
+		Scanner in = new Scanner(System.in);
+			
+		for(int i = 0 ; i < 8 ; i++){
+			input[i] = in.nextInt();
+		}
+		
+		int status = -1 ;
+		int cnt = 0;
+		
+		for(int i = 0 ; i < 8 ; i++){
+			if(input[i] == ara[i]) cnt++;
+		}
+		
+		if(cnt == 8){
+			 System.out.println("ascending");
+			 return ;
+		}	
+		
+		cnt = 0 ;
+		for(int i = 0 ; i < 8 ; i++){
+			if(input[i] == ara2[i]) cnt++;
+		}
+		
+		if(cnt == 8){
+			 System.out.println("descending");
+		}	
+		
+		else{
+			System.out.println("mixed");
+		}
+		
+    }
+}
+
