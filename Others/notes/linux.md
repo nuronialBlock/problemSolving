@@ -68,3 +68,20 @@ tail -f  kanaMama.txt
 
 ========
 
+## Using **tr** 
+
+
+[Video Resource:1](https://youtu.be/RNuh1rqKIbg) 
+
+[Text Resource:1](http://www.thegeekstuff.com/2012/12/linux-tr-command/) 
+
+
+========
+
+## Using **sort**
+
+
+[Video Resource:1](https://youtu.be/h5MpG3QYSSk) 
+
+[Text Resource:1](http://www.thegeekstuff.com/2013/04/sort-files/) 
+
