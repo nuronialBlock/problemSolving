@@ -68,20 +68,36 @@ tail -f  kanaMama.txt
 
 ========
 
-## Using **tr** 
+### Using **tr** 
 
 
-[Video Resource:1](https://youtu.be/RNuh1rqKIbg) 
+[Video Resource: 1](https://youtu.be/RNuh1rqKIbg) 
 
-[Text Resource:1](http://www.thegeekstuff.com/2012/12/linux-tr-command/) 
+[Text Resource: 1](http://www.thegeekstuff.com/2012/12/linux-tr-command/) 
 
 
 ========
 
-## Using **sort**
+### Using **sort**
 
 
-[Video Resource:1](https://youtu.be/h5MpG3QYSSk) 
+[Video Resource: 1](https://youtu.be/h5MpG3QYSSk) 
 
-[Text Resource:1](http://www.thegeekstuff.com/2013/04/sort-files/) 
+[Text Resource: 1](http://www.thegeekstuff.com/2013/04/sort-files/) 
 
+
+________
+
+### Using **uniq** 
+
+[Video Resource: 1](https://youtu.be/VRrd9ErU13w)
+
+[Text Resource: 1](http://www.thegeekstuff.com/2013/05/uniq-command-examples/) 
+
+*Practice*
+
+- [1](https://www.hackerrank.com/contests/text-processing-tools-in-linux/challenges/text-processing-in-linux-the-uniq-command-2)
+
+### using **paste**
+[Text Resource: 1](http://www.theunixschool.com/2012/07/10-examples-of-paste-command-usage-in.html)
+[Video Resource: 1](https://youtu.be/DCJPFjS_vss)
