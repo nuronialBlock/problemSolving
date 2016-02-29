@@ -99,5 +99,17 @@ ________
 - [1](https://www.hackerrank.com/contests/text-processing-tools-in-linux/challenges/text-processing-in-linux-the-uniq-command-2)
 
 ### using **paste**
+
 [Text Resource: 1](http://www.theunixschool.com/2012/07/10-examples-of-paste-command-usage-in.html)
+
 [Video Resource: 1](https://youtu.be/DCJPFjS_vss)
+
+
+### using **grep**
+
+[Text Resource: 1](http://www.thegeekstuff.com/2009/03/15-practical-unix-grep-command-examples/)
+
+[Text Resource: 2](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html)
+
+
+[Video Resource: 1](https://www.youtube.com/watch?v=WX5Zfflvdt0)
