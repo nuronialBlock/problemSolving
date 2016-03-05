@@ -1,0 +1,89 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+int input[109][109];
+
+long long ara[109];
+	
+
+void toBin(int n , int m){
+	
+	for(int i = 1 ; i <= n ; i++ ){
+		
+		int num = 0;
+		
+		for(int j = m-1 , k= 1 ; k <= m ; k++, j-- ){
+			
+			int sum = pow(2,j) * input[i][k]; 
+			num += sum ;
+			
+			
+		}
+		
+		ara[i] =  num;
+		
+	}
+	
+	
+} 
+
+void solve(int n , int m){
+	
+	int row,ans;
+	
+	row = n /2 ;
+	ans =  n;
+	int breakIt = 0;
+	while(row != 0){
+		
+		for(int i = row, j = row+1 ; i>=1 ; i-- , j++){
+			if(ara[i]!=ara[j]) {
+				
+				breakIt = 1;
+				
+				break;
+			}
+		}
+		
+		if(breakIt)  break;
+		else ans = row; 
+		
+		if(row%2==0) row/=2;
+		else break;
+	}
+	
+	cout << ans  <<endl;
+	
+	
+}
+
+int main()
+{
+	int n , m ; 
+	
+	cin>>n>>m;
+	for (int i = 1 ; i <= n ; i++){
+		for(int j= 1; j <= m ; j++){
+			cin>>input[i][j];
+		}
+	}
+	
+	
+	if(n%2==0){
+		
+		
+		toBin(n,m);
+		//for(int i = 1 ; i <= n ; i++) cout << ara[i]<<endl;
+		solve(n,m);
+		
+		
+	}
+	else {
+		cout << n <<endl;
+	}
+	
+	
+	return 0;
+}

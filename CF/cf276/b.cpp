@@ -1,0 +1,101 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pii pair<int , int >
+#define ff first
+#define ss second
+
+#define vi vector<int > 
+#define vc vector<char > 
+#define vpi vector <pii>
+#define vd vector <double >
+#define vb vector <bool >
+#define vs vector <string >
+#define pb push_back
+#define sz size()
+
+
+#define mii map<int , int >
+#define mdd map<double,double>
+#define msi map<string,int>
+#define mis map<int , string> 
+
+#define pq priority_queue
+#define maxN 100009
+#define maxX **
+#define maxY ***
+#define maxx *****
+#define mod 100000000
+
+#define SET(a,n) memset(a,n,sizeof(a));
+#define loop0(i,n) for(int i = 0 ; i < n ; i++ ) 
+#define loop1(i,n) for(int i = 1 ; i <=n ; i++)
+ 
+
+template <class T> 
+T pows(int a , int b){
+	
+	T ans = 1 ;
+	
+	for(int i = 1 ; i  <= b ; i++  ) ans*=a; 
+	
+	return ans;
+}
+
+/***
+
+"library ends on upside  
+
+Be careful, becuz the hsitory will be written downside. :) "
+
+***////
+
+double dis(int x1 , int y1 , int x2 , int y2 ){
+	
+	return sqrt( ( (x1-x2)* (x1-x2) )  + ( (y1-y2)* (y1-y2) )   );
+	
+}
+
+
+int ara[1000000];
+	
+
+int main()
+{
+	
+	
+	int n ;
+	
+	for(int  i = 0 ; i < 1000000 ;i++ ){
+		
+		ara[i] = i*i;
+		
+	}
+	
+	
+	cin >> n ; 
+	int X = -(1 << 30 ) , Y = -(1<<30), x = 1 << 30 , y = 1 << 30 ; 
+	
+	map<int,int> mx , my; 
+	int ix , iy ; 
+	for(int i = 0 ; i < n ; i++ ){
+		
+		cin >> ix  >>iy ;
+		
+		mx[ix]++;
+		my[iy]++; 
+		
+		X = max(X, ix );
+		Y = max(Y, iy );
+		
+		x = min(x, ix); 
+		y = min (y,iy);
+		
+	} 
+	
+	
+	
+	return  0 ;
+	
+}

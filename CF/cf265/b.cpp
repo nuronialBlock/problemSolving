@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+int main()
+{
+
+	
+	int n;
+	
+	cin >> n ;
+	
+	vector <int > s;
+	
+	for(int i = 0 ; i  < n ; i++  ){
+		
+		
+		int num ;
+		cin >> num ;
+		
+		s.push_back(num);
+		
+	}
+
+
+	int count  = 0;
+	
+	int strt = 0 ;
+	
+	int last = 0 ;
+	
+	for(int i = 0 ;  i < s.size() ; i++ ){
+	
+		if(strt == 1 && s[i] == 0 ){
+			if(last == 1 ) count++; 	
+		}
+		if(s[i]==1){
+			strt = 1; 
+			count++;
+		}
+		
+		
+		last = s[i] ;
+	}
+	if(last == 0 && strt == 1  ) count-- ;
+	cout << count << endl;
+
+	return 0;
+
+}

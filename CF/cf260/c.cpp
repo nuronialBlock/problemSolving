@@ -1,0 +1,128 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pii pair<int , int >
+#define ff first
+#define ss second
+
+#define ll long long 
+#define ull unsigned long long
+
+#define vi vector<int > 
+#define vc vector<char > 
+#define vpi vector <pii>
+#define vd vector <double >
+#define vb vector <bool >
+#define vs vector <string >
+#define pb push_back
+#define sz size()
+
+
+#define mii map<int , int >
+#define mdd map<double,double>
+#define msi map<string,int>
+#define mis map<int , string> 
+
+#define pq priority_queue
+#define maxN 100005
+#define maxX **
+#define maxY ***
+#define maxx *****
+#define mod 100000000
+
+#define SET(a,n) memset(a,n,sizeof(a));
+
+// loops 
+#define loop(i,a,n) for(int i = a ; i < n ; i++ )
+#define rloop(i,a,n) for(int i = a ; i > n ; i-- )
+#define fasterIO ios::sync_with_stdio(0)
+	
+
+template <class T> 
+T pows(int a , int b){
+	
+	T ans = 1 ;
+	
+	for(int i = 1 ; i  <= b ; i++  ) ans*=a; 
+	
+	return ans;
+}
+
+/***
+
+"library ends on upside  
+
+Be careful, becuz the hsitory will be written downside. :) "
+
+***////
+
+
+
+
+int ara[maxN];
+ll memo[maxN] ; 
+
+
+ll call(ll num){
+
+	if( num > 100000 ) return 0 ; 
+	
+	ll &ans = memo[num]; 
+	
+	if( ans != -1 ) return ans ; 
+	
+	ans = 0 ; 
+	
+	ll take = 0 , notTake =  0;
+	
+	take += call(num+2) + ( num * (ll) ara[num] ) ;
+	
+	notTake += call(num+1);
+	
+	
+	ans = max(take,notTake);
+ 
+	return ans ; 
+
+}
+
+int main()
+{
+	
+	fasterIO;
+	
+	int n ; 
+	
+	SET(ara,0);
+	SET(memo,-1);
+	
+	cin >> n ;
+	
+	loop(i,0,n){
+		
+		int num ;
+		
+		cin >> num ; 
+		
+		ara[num]++;
+		
+	}
+	
+	
+	ll ans = call(1) ;
+	
+	cout << ans << endl; 
+	
+	
+	return 0 ; 
+
+}
+
+
+
+
+
+
+
+

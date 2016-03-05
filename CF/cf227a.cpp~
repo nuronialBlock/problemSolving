@@ -1,0 +1,141 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pii pair<int , int >
+#define ff first
+#define ss second
+
+#define vi vector<int >
+#define vpi vector <pii>
+#define vd vector <double >
+#define vb vector <bool > 
+#define vs vector <string >
+#define pb push_back
+
+
+#define mii map<int , int >
+#define mdd map<double,double>
+#define msi map<string,int>
+#define mis map<int , string> 
+
+
+#define pq priority_queue
+#define maxN ****
+#define max ***
+
+template <class T> 
+T pows(int a , int b){
+	
+	T ans = 1 ;
+	
+	for(int i = 1 ; i  <= b ; i++  ) ans*=a; 
+	
+	return ans;
+}
+
+/***
+
+library ends here  
+
+"Be careful"
+
+***////
+
+
+
+int main()
+{
+	
+	pii p1 , p2 ;
+	char c ;
+	
+	cin>>p1.ff >> c >> p1.ss;
+	cin>>p2.ff >> c >> p2.ss;
+	
+	int H ;
+	int M ;
+	 
+	if( p2.ff > p1.ff ){
+		
+		if(p2.ss > p1.ss ){
+			
+			H = 24 - (p2.ff - p1.ff);
+			H--;
+			M = 60 - (p2.ss - p1.ss);
+			
+		}
+		else if(p2.ss < p1.ss) {
+			
+			H = 24 - (p2.ff - p1.ff);
+			M = (p1.ss - p2.ss);
+			
+		}
+		else if(p2.ss == p1.ss ){
+			H = 24 - (p2.ff - p1.ff);
+			
+			M = 0;
+		}
+		
+	}
+	
+	else if(p2.ff < p1.ff ){
+		
+		if(p2.ss < p1.ss ){
+			
+			H = p1.ff - p2.ff;
+			M = p1.ss - p2.ss;
+			
+		}
+		else if( p2.ss > p1.ss ){
+			
+			H = p1.ff - p2.ff;
+			H--;
+			M = 60 - (p2.ss - p1.ss);
+			
+		}
+		else if(p2.ss == p1.ss ){
+			H = 24 - (p1.ff - p2.ff);
+			
+			M = 0;
+		}
+		
+		
+	}	
+	
+	else if(p2.ff == p1.ff ){
+		
+		H = 0 ;
+		
+		if(p2.ss == p1.ss ) M = 0 ;
+		else if(p1.ss > p2.ss ){
+			
+			M = p1.ss - p2.ss; 
+			
+		} 
+		else if( p2.ss > p1.ss ){
+			
+			H = 23  ;
+			M = 60 - (p2.ss - p1.ss);
+			
+		}
+		
+	}	
+	
+	if(H==0) printf("00:");
+	if(H<10 && H > 0 ) printf("0%d:",H);
+	if(H>=10 && H!= 24) printf("%d:",H);
+	if(H==24) printf("00:");
+	
+	if(M==0) printf("00\n");
+	if(M<10 && M>0) printf("0%d\n",M);
+	if(M>=10 && M!=60) printf("%d\n",M);
+	if(M==60) printf("00\n");	
+
+	return 0 ; 
+}
+
+
+
+
+

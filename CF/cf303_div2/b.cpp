@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+string s1 , s2 ;
+int distance(){
+	
+	int count = 0 ;
+	int siz = s1.size();
+	for(int i = 0 ;  i < siz ; i++){
+		if(s1[i] != s2[i]) count++;
+	}
+	
+	return count ;
+}
+
+int main()
+{
+	char ch ;
+	cin >> s1 >> s2 ;
+	string p = "";
+	int pos = distance();
+	
+	if(pos % 2) cout << "impossible\n";
+	else{
+		int count = 0 ;
+		int siz = s1.size();
+		int i;
+		for(i = 0 ; i < siz ; i++){
+			if(s1[i]!=s2[i]){
+				if(count < pos/2){
+					count++;
+					ch = s2[i];
+					p += ch;
+				}
+			}
+			else if(s1[i] == s2[i]) {ch = s1[i] ; p += ch ;}
+			
+			if(count == pos/2) {i++;break;}
+		}	
+		for( ; i < siz ; i++){
+			if(s1[i]!=s2[i]){
+				ch = s1[i];
+				p += ch;
+			}
+			
+			else if(s1[i] == s2[i])  {ch = s1[i] ; p += ch ;}
+		}
+		cout << p <<endl;
+	}	
+
+	return 0;	
+}

@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define LL long long int 
+
+int main(){
+	
+	LL n , ara[100005] ;
+	
+	cin >> n;
+	
+	for(int i = 1 ; i <= n ; i++){
+		cin >> ara[i];
+	}
+	
+	
+	for(LL i = 1 ; i <= n ; i++){
+		ara[i] = min(i,ara[i]); // 1 4 1
+		if(i > 1)ara[i] = min(ara[i],ara[i-1]+1); // 5 1 3  
+	}
+	
+	for(LL i = n , j = 1 ; i >= 1 ; i-- , j++){
+		ara[i] = min(j,ara[i]);
+		if(i < n) ara[i] = min(ara[i],ara[i+1]+1);
+	}
+	
+	LL ans = ara[1]; 
+	for(int i = 2 ; i <= n ; i++){
+		ans = max(ans,ara[i]);
+	}
+	
+	
+	cout << ans << "\n";
+	return 0;
+}

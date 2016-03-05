@@ -1,0 +1,163 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pii pair<int , int >
+#define ff first
+#define ss second
+
+#define ll long long 
+#define ull unsigned long long
+
+#define vi vector<int > 
+#define vc vector<char > 
+#define vpi vector <pii>
+#define vd vector <double >
+#define vb vector <bool >
+#define vs vector <string >
+#define pb push_back
+#define sz size()
+
+
+#define mii map<int , int >
+#define mdd map<double,double>
+#define msi map<string,int>
+#define mis map<int , string> 
+
+#define pq priority_queue
+#define maxN 100005
+#define maxX **
+#define maxY ***
+#define maxx *****
+#define mod 100000000
+
+#define SET(a,n) memset(a,n,sizeof(a));
+
+// loops 
+#define loop(i,a,n) for(int i = a ; i < n ; i++ )
+#define rloop(i,a,n) for(int i = a ; i > n ; i-- )
+#define fasterIO ios::sync_with_stdio(0)
+
+int   hcard[100] ,  acard[100] ; 
+
+vi v ;
+
+map <int,pii> m ;
+
+int n ; 
+ 
+int main()
+{
+
+	
+	fasterIO; 
+
+	string home , away ;
+	
+	
+	
+	SET(hcard,0);
+	SET(acard,0);
+	
+	char ch; 
+	
+	cin >> home  >> away ;
+	
+	
+	cin >> n ; 
+	
+	
+	loop(i,0,n){
+		
+		int t , j ;
+		char p, c ; 
+		
+		
+		cin >> t >>  p >> j >> 	c ;
+		
+		if( p == 'a' ) {
+			
+			
+			if(c == 'y' && acard[j] != -1000) acard[j]++ ;
+			else if(c == 'r' && acard[j] != -1000) acard[j] = 2 ;
+			
+			int k = 0 ;
+			
+			if(acard[j]==2) {
+				acard[j] = -1000; 
+				pii p1 ;
+				
+				p1.ff = 2 ;
+				p1.ss = j ; 
+				
+				m[t] = p1 ;
+				
+				v.pb(t); 
+				
+			}
+			
+			 	
+			
+		} 
+		
+		else{
+		
+			
+			if(c == 'y' && hcard[j] != -1000 ) hcard[j]++ ;
+			else if(c=='r' && hcard[j]!= -1000) hcard[j] = 2 ;
+			
+			int k = 0 ;
+			
+			if(hcard[j]==2) {
+			
+			
+				hcard[] = -1000 ;
+				pii p1 ;
+				
+				p1.ff = 1 ;
+				p1.ss = j ; 
+				
+				m[t] = p1 ;
+				
+				v.pb(t); 
+			
+			}
+			
+		
+		}
+		
+		
+		
+		
+	}
+	
+	int k = v.size();
+	
+	
+	sort(v.begin(),v.end());
+	
+	
+	loop(i,0,k){
+		
+		int team = m[v[i]].ff; 
+		
+		int jer = m[v[i]].ss; 
+		
+		if( team == 1 ) cout << home << " "; 
+		else cout << away << " " ; 
+		
+		cout << jer << " " << v[i] << endl; 
+		
+		
+	}
+
+
+	return 0 ; 
+
+
+}
+
+
+
+
+

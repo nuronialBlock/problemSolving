@@ -1,0 +1,68 @@
+//hasta la victoria siempre
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pii pair<int,int>
+#define pb push_back
+#define vi vector<int>
+#define LL long long
+
+#define all(v) v.begin(),v.end()
+#define rall(v) v.rbegin(),v.rend()
+
+#define maxi 100005
+
+int main()
+{
+	ios_base::sync_with_stdio(0);
+	map<string,int> m1;
+	int n;
+	string s;
+	cin >> n ;
+	int idx = 1;
+	int ans = 0 ;
+	vi v;
+	for(int i = 0 ; i < n ; i++){
+		char ch;
+		cin.ignore();
+		cin >> ch ;
+		cin.ignore();
+		cin >> s;
+		if(m1[s]==0){
+			m1[s] = idx;
+			idx++;
+		}
+		if(ch == '+'){
+			bool got = false;
+			for(int i = 0 ; i < v.size(); i++){
+				if(v[i] == 0) {
+					v[i] = m1[s];
+					got = true;
+					break;
+				}
+			}
+			if(!got){
+				v.pb(m1[s]);
+				if(v.size() > ans) ans++;
+			}
+		}
+		else{
+			bool got = false;
+			for(int i = 0 ; i < v.size(); i++){
+				if(v[i] == m1[s]) {
+					v[i] = 0;
+					got = true;
+					break;
+				}
+			}
+			if(!got) ans++;
+		}
+	
+	}
+	
+	cout << ans << "\n";
+	
+	return 0;
+}

@@ -1,0 +1,106 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pii pair<int , int >
+#define ff first
+#define ss second
+
+#define vi vector<int >
+#define vpi vector <pii>
+#define vd vector <double >
+#define vb vector <bool > 
+#define vs vector <string >
+#define pb push_back
+
+
+#define mii map<int , int >
+#define mdd map<double,double>
+#define msi map<string,int>
+#define mis map<int , string> 
+
+
+#define pq priority_queue
+#define maxN ****
+#define max ***
+
+template <class T> 
+T pows(int a , int b){
+	
+	T ans = 1 ;
+	
+	for(int i = 1 ; i  <= b ; i++  ) ans*=a; 
+	
+	return ans;
+}
+
+/***
+
+library ends here  
+
+"Be careful"
+
+***////
+
+int main()
+{
+	
+	int n , m ;
+
+
+	cin >> n >> m ;
+	
+	
+	vi a ,  b ;
+	
+	for(int i = 0; i < n ; i++)
+	{
+		int num;
+		cin >> num ;
+		
+		a.pb(num);
+		
+		
+	}
+	
+	for(int i = 0; i < m ; i++)
+	{
+		int num;
+		cin >> num ;
+		
+		b.pb(num);
+	}
+	
+	
+	sort(a.begin(),a.end());
+	sort(b.begin(),b.end());
+
+	int j = 0  ;
+	for(int i = 0 ; i < m ; i++ ){
+		
+		if(b[i]>=a[j] && j < n ) j++;
+		
+	}
+	
+	
+	cout << n - j << endl;
+	
+	
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,118 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+#define mi 101
+
+bool a[mi][mi] , b1[mi][mi], b2[mi][mi];
+
+	
+int m ,n ;
+	
+
+bool check1(int row , int col ){
+	
+	bool ans = b1[row][0] ;
+	
+	for(int i = 1 ; i <  n ; i++){
+		
+		ans &= b1[row][i] ;	
+	}
+	
+
+	for(int i = 0 ; i <  m ; i++){
+		
+		ans &=b1[i][col] ;
+		
+		
+	}
+	
+	return ans ;
+	
+}
+
+bool check2(int row , int col ){
+	bool ans = a[row][0] ;
+	
+	for(int i = 1 ; i <  m ; i++){
+		
+		ans &= a[row][i] ;	
+	}
+	
+
+	for(int i = 0 ; i <  n ; i++){
+		
+		ans &=a[i][col] ;
+		
+		
+	}
+	
+	return ans ;
+	
+
+	
+}
+
+
+int main()
+{
+
+	cin >> m >> n ;
+	
+	for(int i = 0 ;i < m ; i++){
+		for(int j = 0 ;j < n ;j++){
+			cin >> b1[i][j];
+		}
+	}
+	
+	
+	for(int i = 0 ;i < m ; i++){
+		for(int j = 0 ;j < n ;j++){
+			
+			bool num = check1(i ,j );
+			
+			a[i][j] = num;
+			
+		}
+	}
+	
+	bool got = 1 ;
+	for(int i = 0 ;i < m ; i++){
+		for(int j = 0 ;j < n ;j++){
+			
+			b2[i][j] = check2(i,j);
+		
+			
+		}
+	}
+	
+	
+	for(int i = 0 ;i < m ; i++){
+		for(int j = 0 ;j < n ;j++){
+			
+			if(b2[i][j] != b1[i][j]) {got = 0; break; }
+			
+		}
+	}
+	
+	
+	
+	
+	if(got) {
+		cout << "YES" << endl;
+		for(int i = 0 ;i < m ; i++){
+			for(int j = 0 ;j < n ;j++){
+			
+				cout << a[i][j] << " ";
+			
+			}
+			
+			cout <<endl;
+		}
+		
+	}
+	
+	else cout << "NO\n";
+	
+	
+	return 0 ; 
+}

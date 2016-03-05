@@ -1,0 +1,40 @@
+//hasta la victoria siempre
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pii pair<int,int>
+#define pb push_back
+#define vi vector<int>
+#define LL long long
+
+#define all(v) v.begin(),v.end()
+#define rall(v) v.rbegin(),v.rend()
+
+int main()
+{
+	ios_base::sync_with_stdio(0);
+	
+	int n;
+	
+	cin >> n ;
+	int ara[n+2];
+	
+	for(int i = 0 ; i< n ; i++){
+		cin >> ara[i];
+	}
+	
+	cout << abs(ara[0] - ara[1]) << " " << abs(ara[0] - ara[n-1]) << "\n";
+	for(int i = 1	 ; i < n - 1 ; i++){
+		int mini =  abs(ara[i] - ara[i-1]);
+		mini = min(mini,abs(ara[i] - ara[i+1]));
+		int maxi = abs(ara[i] - ara[0]);
+		maxi = max(maxi,abs(ara[i] - ara[n-1]));
+		cout << mini << " " << maxi << "\n";
+	}
+	cout << abs(ara[n-1] - ara[n-2]) << " " << abs(ara[n-1] - ara[0]) << "\n";
+	
+	
+	return 0;
+}

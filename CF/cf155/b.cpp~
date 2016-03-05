@@ -1,0 +1,103 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define DG cout << "searching...found" << endl
+
+class data{
+
+public:
+	
+	int month , day , jury , dayneeds ;	
+
+};
+
+struct newData{
+	
+	int start , end , jury ; 
+	
+	
+};
+
+// after doing so many things , the things that are u missing are confident , persistency and determination - tasfia mou  
+
+
+int main()
+{
+	
+	
+	int ara[15]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+	
+	int n ;
+	
+	
+	fread("input.txt","r",stdin);
+	fread("output.txt","w",stdout);
+	
+	while(cin >> n){
+	
+		int check[800]={0};
+	
+		vector <data> vd;
+	
+		for(int i = 0 ; i < n ; i++ ) {
+	
+		data D;
+		cin >> D.month >> D.day >> D.jury >> D.dayneeds ;	
+		
+		
+		vd.push_back(D);
+		
+	}
+	
+	vector < newData > vnd ; 
+	
+	
+	map<int,int > m1 ; 
+	int needJury = 0 ; 
+	
+	const int high = 366 ; 	 
+	
+	for(int i = 0 ; i < n ; i++ ){
+		
+		
+		newData nd ; 
+		int days = 0 ; 
+		
+		int size = vd[i].month ;
+		for(int j = 1 ; j < size ; j++ ){
+			
+			days += ara[j];
+			
+		}
+		
+		days += vd[i].day;
+		
+		nd.end = days ; 
+		nd.start = days - vd[i].dayneeds; 
+		nd.jury = vd[i].jury ; 
+		
+		
+		int startingDate = nd.start;
+		
+		for(int j = 0 ; j < vd[i].dayneeds ;j++ ){
+			
+			check[ high + startingDate + j ] += vd[i].jury ;
+			
+		}
+	
+	}
+	
+		for(int i = 0 ; i < 800 ; i++ ){
+			
+			needJury = max(needJury,check[i]);
+			
+		}
+		
+		cout << needJury <<endl;
+	
+	}
+	
+	return 0 ; 
+
+}
