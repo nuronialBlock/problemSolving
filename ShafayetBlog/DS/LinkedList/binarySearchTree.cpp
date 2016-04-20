@@ -70,12 +70,14 @@ void deleteNode(int data){
 	}
 	else if(cur_node->left == NULL || cur_node->right == NULL){
 		if(cur_node->data < parent->data){
-			parent->left = cur_node->left;
+			if(cur_node->left != NULL) parent->left = cur_node->left;
+			else parent->left = cur_node->right;
 		}
 		else if(cur_node->data > parent->data){
-			parent->right = cur_node->right;
+			if(cur_node->left != NULL) parent->right = cur_node->left;
+			else parent->right = cur_node->right;
 		}
-		else {
+		else if(cur_node->data == parent->data){
 			if(cur_node->right != NULL){
 				root = cur_node->right;
 			}
@@ -85,16 +87,16 @@ void deleteNode(int data){
 			full_null(parent);
 		}
 
-		if(parent != cur_node) full_null(cur_node);
+		full_null(cur_node);
 	}
 	else {
 		node* mini = find_min_node(cur_node->right);
 		
 		// DBUG Window
-		cout << "The mini data " << mini->data << "\n"; 
-		cout << "The parent data " << parent->data << "\n"; 
+		// cout << "The mini data " << mini->data << "\n"; 
+		// cout << "The parent data " << parent->data << "\n"; 
 		
-		if(cur_node == root) {root = mini; cout << "Mini and root are equal: " << cur_node->data << " " << root->data << "\n";}  
+		if(cur_node == root) {root = mini;}  
 		else if(cur_node->data < parent->data) parent->left = mini;
 		else parent->right = mini;
 
@@ -167,7 +169,7 @@ int main()
 	// Type - 3:
 
 	// Case 1 :
-	//deleteNode(100);
+	// deleteNode(100);
 
 	printf("\n");
 	print_preorder(root);
