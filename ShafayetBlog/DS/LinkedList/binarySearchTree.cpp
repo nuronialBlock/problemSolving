@@ -49,6 +49,11 @@ node* find_min_node(node *cur_node) {
 	return cur_node;
 }
 
+void full_null(node *n){
+	n->right = NULL;
+	n->left = NULL;
+	n = NULL;
+}
 
 void deleteNode(int data){
 	node *cur_node = root;
@@ -61,87 +66,108 @@ void deleteNode(int data){
 	if(cur_node->left == NULL && cur_node->right == NULL){
 		if(cur_node->data < parent->data) parent->left = NULL;
 		else parent->right = NULL;
-		cur_node = NULL; 
+		full_null(cur_node);
 	}
 	else if(cur_node->left == NULL || cur_node->right == NULL){
 		if(cur_node->data < parent->data){
 			parent->left = cur_node->left;
 		}
-		else {
+		else if(cur_node->data > parent->data){
 			parent->right = cur_node->right;
 		}
-
-		if(cur_node == root){
-			root = parent;
+		else {
+			if(cur_node->right != NULL){
+				root = cur_node->right;
+			}
+			else {
+				root = cur_node->left;
+			}
+			full_null(parent);
 		}
 
-		cur_node->left = NULL;
-		cur_node->right = NULL;
-		cur_node = NULL;
+		if(parent != cur_node) full_null(cur_node);
 	}
 	else {
 		node* mini = find_min_node(cur_node->right);
 		
 		// DBUG Window
-		// cout << "The mini data " << mini->data << "\n"; 
-		// cout << "The parent data " << parent->data << "\n"; 
+		cout << "The mini data " << mini->data << "\n"; 
+		cout << "The parent data " << parent->data << "\n"; 
 		
 		if(cur_node == root) {root = mini; cout << "Mini and root are equal: " << cur_node->data << " " << root->data << "\n";}  
 		else if(cur_node->data < parent->data) parent->left = mini;
 		else parent->right = mini;
 
 		mini->left = cur_node->left;
-		mini->right = cur_node->right;
+		if(cur_node->right != mini){
+			while(mini->right != NULL){
+				mini = mini->right;
+			}
+			mini->right = cur_node->right;	
+		}
 
-		cur_node->right = NULL;
-		cur_node->left = NULL;
-		cur_node = NULL;
+		full_null(cur_node);
 	}
 }
 
 int main()
 {
 	// Type - 1:
-		// insert(50);
-		// insert(20);
-		// insert(60);
-		// insert(10);
-		// insert(25);
-		// insert(5);
-		// insert(55);
-		// insert(65);
-		// insert(70);
-		// insert(35);
-		// insert(58);
+
+	// insert(50);
+	// insert(20);
+	// insert(60);
+	// insert(10);
+	// insert(25);
+	// insert(5);
+	// insert(55);
+	// insert(65);
+	// insert(70);
+	// insert(35);
+	// insert(58);
 
 	// Type - 2:
-		insert(10);
-		insert(12);
-		insert(14);
-		insert(15);
+
+	// insert(10);
+	// insert(12);
+	// insert(14);
+	// insert(15);
+
+	// Type - 3 : 
+	// insert(100);
+	// insert(50);
+	// insert(25);
 
 	print_preorder(root);
 
 	// Type - 1:
-		// Case 1:: Passed
-		// deleteNode(5);
-		// deleteNode(70);
 
-		// Case 2:: Passed 
-		// deleteNode(10);
-		// deleteNode(65);
+	// Case 1:: Passed
+	// deleteNode(5);
+	// deleteNode(70);
 
-		// Case 3:: Passed
-		// deleteNode(20);
-		// deleteNode(60);
+	// Case 2:: Passed 
+	// deleteNode(10);
+	// deleteNode(65);
 
-		// Case 4:: Passed
-		// deleteNode(50);
+	// Case 3:: Passed
+	// deleteNode(20);
+	// deleteNode(60);
+
+	// Case 4:: Passed
+	// deleteNode(50);
+
 
 	// Type - 2:
-		// Case 1: Didn't Pass
-		deleteNode(10);
 
+	// Case 1: Passed
+	// deleteNode(10);
+
+
+	// Type - 3:
+
+	// Case 1 :
+	//deleteNode(100);
 
 	printf("\n");
 	print_preorder(root);
