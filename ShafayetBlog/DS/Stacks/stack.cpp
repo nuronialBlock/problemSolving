@@ -5,33 +5,42 @@ struct node{
 	node *next; 
 };
 
-class stack {
+class Stack {
 	node* top;
 public:
-	stack(){
+	Stack(){
 		top = NULL;
 	}
 	void push(char ch);
-	void pop(char ch);
+	void pop();
+	bool empty();
+	char Top(); 
 };
 
-void stack::push(char ch){
-	ptr = new node;
+void Stack::push(char ch){
+	node* ptr = new node;
 	ptr->data = ch;
-	ptr->next = NULL;
-	if(top != NULL){
-		ptr->next = top;
-	}
+	ptr->next = top;
 	top = ptr;
 }
 
-void stack::pop(){
+void Stack::pop(){
 	node* tmp;
 	if(top == NULL){
-		cout << "Stack Empty!" << "\n";
-		return;
+		cout << "Stack Empty But calling POP()!" << "\n";
+		exit(0);
 	}
 	tmp = top;
 	top = top->next;
 	delete tmp;
+}
+
+bool Stack::empty(){
+	if(top == NULL) return true;
+	return false;	
+}
+
+char Stack::Top(){
+	char ch = top->data;
+	return ch;
 }
