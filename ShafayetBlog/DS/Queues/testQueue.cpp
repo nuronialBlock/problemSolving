@@ -1,3 +1,7 @@
+#include "bits/stdc++.h"
+
+using namespace std;
+
 struct Node {
 	char data;
 	Node* next;
@@ -58,4 +62,22 @@ char Queue::Front(){
 bool Queue::IsEmpty(){
 	if(front == NULL && rear == NULL) return true;
 	return false;
+}
+
+int main(){
+	Queue q = Queue();
+
+	cout << q.IsEmpty() << "\n";
+
+	q.Push('C');
+	q.Push('A');
+	cout << q.Front() << "\n";
+	
+	q.Pop();
+	cout << q.Front() << "\n";
+
+	q.Pop();
+	cout << q.IsEmpty() << "\n";
+
+	return 0;
 }
