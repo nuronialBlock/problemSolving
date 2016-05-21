@@ -12,7 +12,7 @@ struct node
 
 void preOrder(node* root) {
 	if(root == NULL) return ;
-	cout << root->data << "\n";
+	cout << root->data <<  " ";
 	preOrder(root->left);	
 	preOrder(root->right);
 	return ;	
