@@ -13,7 +13,7 @@ using namespace std;
 int main() {
     
   	ofstream fout ("ride.out");
-	ifstream fin ("ride.in");
+	  ifstream fin ("ride.in");
     
     
     
