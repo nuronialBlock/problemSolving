@@ -5,27 +5,21 @@ using namespace std;
 #define pb push_back
 
 vector<int> v;
-int isPrime[50];
 
 void makePrimes(){
-	memset(isPrime, 1, sizeof isPrime);
-
 	v.pb(2);
 	for (int i = 3; i <= 49; i += 2){
+		bool isPrime = true;
 		for (int j = 2; j * j <= i; ++j){
 			if(i % j == 0){
-				isPrime[i] = false;
+				isPrime = false;
 				break;
 			}
 		}
-		if (isPrime[i]) {
+		if (isPrime) {
 			v.pb(i);
 		}
 	}
-	v.pb(4);
-	v.pb(9);
-	v.pb(25);
-	v.pb(49);
 }
 
 int main() {
@@ -42,13 +36,32 @@ int main() {
 		
 		cin >> s;
 		if(s == "yes") {
+			num = v[i];
 			cnt++;
 		}
 	}
 
-	if(cnt == 0 || cnt == 1){
+	if(cnt == 0){
 		cout << "prime\n";
 		fflush(stdout);
+	} else if (cnt == 1){
+		int n = num * num;
+		if(n > 100){
+			cout << "prime\n";
+			fflush(stdout);
+		} else {
+			cout << n << "\n";
+			fflush(stdout);
+
+			cin >> s;
+			if (s == "yes") {
+				cout << "composite\n";
+				fflush(stdout);
+			} else {
+				cout << "prime\n";
+				fflush(stdout);
+			}
+		}
 	} else {
 		cout << "composite\n";
 		fflush(stdout);
