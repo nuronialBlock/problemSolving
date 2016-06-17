@@ -2,13 +2,13 @@
 
 using namespace std;
 
-int main() {
+long long n, num, m;
+map<long long, bool> isInsert;
+priority_queue < long long, vector<long long>, greater<long long> > pq;
+vector<string> vs;
+vector<long long > vi;
 
-	long long n, num, m;
-	map<long long, bool> isInsert;
-	priority_queue < long long, vector<long long>, greater<long long> > pq;
-	vector<string> vs;
-	vector<long long > vi;
+int main() {
 
 	m = 0;
 	cin >> n;
@@ -24,7 +24,7 @@ int main() {
 			m++;
 		} else if(s == "getMin"){
 			cin >> num;
-			if(pq.top() == num){
+			if(!pq.empty() && pq.top() == num){
 				vs.push_back(s);
 				vi.push_back(num);
 				m++;
@@ -49,6 +49,13 @@ int main() {
 			}
 		} else {
 			m++;
+			if(pq.empty()){
+				pq.push(2);
+				isInsert[2] = true;
+				vs.push_back("insert");
+				vi.push_back(2);
+				m++;
+			}
 			isInsert[pq.top()] = false;
 			pq.pop();
 			vs.push_back(s);
