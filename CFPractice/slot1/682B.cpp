@@ -16,7 +16,7 @@ int main(){
 
 	sort(v.begin(), v.end());
 	
-	long long cnt = 1;
+	long long cnt = 1 ;
 	for (int i = 0; i < v.size(); ++i) {
 		if(v[i] >= cnt) {
 			v[i] = cnt;
