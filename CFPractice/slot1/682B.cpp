@@ -6,8 +6,7 @@ int main(){
 
 	long long n; 
 	vector<long long> v;
-	
-	v.push_back(0);
+
 	cin >> n;
 	while(n--){
 		long long kk;
@@ -15,10 +14,14 @@ int main(){
 		v.push_back(kk);
 	}
 
-
 	sort(v.begin(), v.end());
-	for (int i = 1; i < v.size(); ++i) {
-		if(v[i] > i) v[i] = v[i-1] + 1;
+	
+	long long cnt = 1;
+	for (int i = 0; i < v.size(); ++i) {
+		if(v[i] >= cnt) {
+			v[i] = cnt;
+			cnt++;
+		}
 	}
 	
 	cout << v[v.size() - 1] + 1 << "\n";
